@@ -34,7 +34,7 @@ $dbxGithubUrl = 'https://github.com/dbltoe/Dashboard_Boxes';
  * captured on the first scan and never refreshed. The forum runs on XenForo, whose thread address
  * is /threads/<id>/. An empty string renders nothing.
  */
-$dbxForumUrl = '';
+$dbxForumUrl = 'https://www.zen-cart.com/threads/207350';
 
 $dbxButtonGap = '6px';
 $dbxButton = static function ($url, $label) use ($dbxButtonGap) {

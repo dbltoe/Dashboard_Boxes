@@ -9,7 +9,7 @@ the Plugin Manager panel, and into the Library listing. Set it before the
 first release: on Zen Cart 2.0 and 2.1 the panel text is captured on a
 store's first Plugin Manager scan and never refreshed.
 
-Posted: (date and link once it exists)
+Posted by John 2026-09-21 in Addon Admin Tools: https://www.zen-cart.com/threads/207350
 
 ---
 

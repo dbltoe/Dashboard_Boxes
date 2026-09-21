@@ -67,6 +67,12 @@ Plugin Manager > *Dashboard Boxes* > **Uninstall** drops the plugin's layout
 table and hands the dashboard back to core. Delete the
 `zc_plugins/DashboardBoxes/` directory afterwards if you like.
 
+## Support
+
+Questions and problem reports go in the plugin's thread on the Zen Cart
+forum: https://www.zen-cart.com/threads/207350. Please include your Zen
+Cart and PHP versions and what the admin home page shows.
+
 ## For other plugins
 
 A plugin can register a panel of its own, or take over the layout, through

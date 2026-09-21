@@ -77,4 +77,4 @@ v1.0.0
 ## Links
 
 - GitHub: https://github.com/dbltoe/Dashboard_Boxes
-- Support thread: (link once posted)
+- Support thread: https://www.zen-cart.com/threads/207350
