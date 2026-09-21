@@ -44,6 +44,37 @@ main area or the sidebar. Each drop is saved for the admin who made it; other
 admins keep their own arrangement. *Reset layout* in the small toolbar above
 the panels puts the defaults back.
 
+## Coming from the replacement-file package
+
+If the store already carries ZenExpert's Modern Admin Dashboard as
+replacement admin files, take them out. The plugin hides the stock panels
+but cannot undo those files, and the old `admin/includes/css/index.css`
+restyles this plugin's panels. `admin/` below means your renamed admin
+directory.
+
+**Delete** the files the package added:
+
+- `admin/ajax_dashboard.php`
+- `admin/includes/auto_loaders/config.modern_dashboard.php`
+- `admin/includes/init_includes/init_modern_dashboard_install.php`
+- `admin/includes/css/index.css`
+- `admin/includes/javascript/index.js`
+- `admin/includes/modules/dashboard_widgets/MostPopularProductsDashboardWidget.php`
+- `includes/classes/ajax/zcAjaxAdminDashboardWidgetArrange.php` (newer package releases only)
+
+**Restore from a stock copy of your Zen Cart version** the core files the
+package replaced: `admin/index_dashboard.php`, `login.php`, `orders.php`,
+`orders_status.php`, `password_forgotten.php`; `admin/includes/header.php`
+and `header_navigation.php`; `admin/includes/functions/admin_access.php`
+and `general.php`; `admin/includes/css/login.css`, `menu.css`,
+`password_forgotten.css`, `stylesheet.css`; `admin/includes/languages/lang.english.php`,
+`english/lang.index.php`, `english/lang.orders_status.php`; and the eight
+stock files in `admin/includes/modules/dashboard_widgets/`.
+
+Package releases differ in what they carry, so the sure way is to compare
+the admin directory against a stock copy of your version and restore
+whatever differs. The database needs nothing undone.
+
 ## Upgrading the plugin
 
 Upload the new version directory beside the old one, open Plugin Manager and

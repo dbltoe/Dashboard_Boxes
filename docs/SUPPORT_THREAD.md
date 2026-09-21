@@ -57,6 +57,10 @@ The design is ZenExpert's Modern Dynamic Dashboard, which the Zen Cart team merg
 
 The full documentation (readme.html) is inside the plugin and linked from the Plugin Manager panel: the panels, arranging them, order-status colors, admin profiles, customizing, upgrading, uninstalling, troubleshooting and compatibility.
 
+**Already running the replacement-file version?**
+
+Take its files out, before or after installing this plugin: the seven it added (`admin/ajax_dashboard.php`, `admin/includes/auto_loaders/config.modern_dashboard.php`, `admin/includes/init_includes/init_modern_dashboard_install.php`, `admin/includes/css/index.css`, `admin/includes/javascript/index.js`, `admin/includes/modules/dashboard_widgets/MostPopularProductsDashboardWidget.php` and, in newer releases, `includes/classes/ajax/zcAjaxAdminDashboardWidgetArrange.php`) go, and the core files it replaced come back from a stock copy of your own Zen Cart version. The readme has the full list. The old `index.css` in particular restyles this plugin's panels if it is left behind. The database needs nothing undone.
+
 **Customizing**
 
 The Recent Orders panel honors the same site-specific overrides the stock widget does (`$recentOrdersMaxRows`, `$recentOrdersWidgetOrderStatusIDs`, `$show_status_pills`, `$includeAttributesInPopoverRows`). Styling goes in `admin/includes/css/site-specific-styles.php`; every panel wrapper carries `data-dbx-widget="<Name>"` so a single panel can be targeted.

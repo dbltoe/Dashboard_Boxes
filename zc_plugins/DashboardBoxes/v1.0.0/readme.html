@@ -76,6 +76,7 @@ footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--rule);
     <li><a href="#what">What it does</a></li>
     <li><a href="#why">Why it exists</a></li>
     <li><a href="#install">Installing</a></li>
+    <li><a href="#fromfiles">Coming from the replacement-file package</a></li>
     <li><a href="#arrange">Arranging the panels</a></li>
     <li><a href="#panels">The panels</a></li>
     <li><a href="#colors">Order-status colors</a></li>
@@ -115,6 +116,32 @@ footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--rule);
 </ol>
 <p>The installer creates one table, <code>dashboard_boxes_layout</code> (with your table prefix, if any). It adds no configuration keys, registers no admin page and alters no core table.</p>
 <div class="note"><p>The admin home page shows Zen Cart's own setup wizard until <em>Store Name</em>, <em>Store Owner</em>, <em>Store Owner Email</em> and <em>Store Name and Address</em> are all filled in under <strong>Configuration &gt; My Store</strong>. The dashboard, plugin or not, appears only after that.</p></div>
+
+<h2 id="fromfiles">Coming from the replacement-file package</h2>
+<p>If your store already carries ZenExpert's Modern Admin Dashboard as replacement admin files, take those files out before or after installing this plugin. The plugin hides the stock panels but cannot undo what those files changed, and one of them, the old <code>index.css</code>, restyles this plugin's panels (the tell-tale is a status badge dropping below its row). In the paths below, <code>admin/</code> means your renamed admin directory.</p>
+<h3>Files the package added: delete them</h3>
+<ul>
+  <li><code>admin/ajax_dashboard.php</code></li>
+  <li><code>admin/includes/auto_loaders/config.modern_dashboard.php</code></li>
+  <li><code>admin/includes/init_includes/init_modern_dashboard_install.php</code> (runs on every admin page load until it is gone)</li>
+  <li><code>admin/includes/css/index.css</code></li>
+  <li><code>admin/includes/javascript/index.js</code></li>
+  <li><code>admin/includes/modules/dashboard_widgets/MostPopularProductsDashboardWidget.php</code></li>
+  <li><code>includes/classes/ajax/zcAjaxAdminDashboardWidgetArrange.php</code> (newer releases of the package only)</li>
+</ul>
+<h3>Core files the package replaced: put the stock ones back</h3>
+<p>Copy these from a fresh download of <em>your</em> Zen Cart version, not from another version. The package's own <code>orders.php</code> and <code>general.php</code> are 2.1.0 files, which is what breaks the Configuration pages on a 2.2 store.</p>
+<ul>
+  <li><code>admin/index_dashboard.php</code>, <code>admin/login.php</code>, <code>admin/orders.php</code>, <code>admin/orders_status.php</code>, <code>admin/password_forgotten.php</code></li>
+  <li><code>admin/includes/header.php</code>, <code>admin/includes/header_navigation.php</code></li>
+  <li><code>admin/includes/functions/admin_access.php</code>, <code>admin/includes/functions/general.php</code></li>
+  <li><code>admin/includes/css/login.css</code>, <code>menu.css</code>, <code>password_forgotten.css</code>, <code>stylesheet.css</code></li>
+  <li><code>admin/includes/languages/lang.english.php</code>, <code>english/lang.index.php</code>, <code>english/lang.orders_status.php</code></li>
+  <li>the eight stock files in <code>admin/includes/modules/dashboard_widgets/</code>: BaseStatistics, OrderStatus, RecentCustomers, RecentOrders, SalesReport, Specials, Traffic and WhosOnline</li>
+</ul>
+<p>Releases of the package differ in which files they carry, so the sure way is to compare your admin directory against a stock copy of your version and restore whatever differs. The <a href="https://www.zen-cart.com/threads/207350" target="_blank" rel="noopener noreferrer">support thread</a> can help if you are unsure.</p>
+<h3>Database</h3>
+<p>Nothing needs to be undone. The package may have added an <code>orders_status_color_code</code> column (which 2.2.1 and later have anyway and this plugin uses), a <code>dashboard_layout</code> column on the <code>admin</code> table, and a <code>DASHBOARD_WIDGETS_CONFIG</code> row in <code>configuration</code>. All three are harmless left alone; the configuration row can be deleted if you like, nothing reads it.</p>
 
 <h2 id="arrange">Arranging the panels</h2>
 <ul>
