@@ -1,0 +1,397 @@
+/**
+ * Dashboard Boxes -- dashboard page styles.
+ *
+ * Linked by admin/includes/admin_html_head.php on the dashboard page only
+ * (the page name is "index"). The column rules apply only once the head
+ * script has marked the page active, so on v3.0.0, where this plugin stands
+ * aside, nothing here changes the core dashboard.
+ *
+ * @package  DashboardBoxes
+ * @license  https://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU Public License V2.0
+ */
+
+/* ---- the three core columns become top strip, main area, sidebar ---- */
+html.dbx-active body.indexDashboard #colone,
+html.dbx-active body.indexDashboard #coltwo,
+html.dbx-active body.indexDashboard #colthree {
+    float: left;
+    min-height: 60px;
+    padding-bottom: 30px;
+}
+html.dbx-active body.indexDashboard #colone {
+    width: 100%;
+    padding-bottom: 0;
+}
+@media (min-width: 992px) {
+    html.dbx-active body.indexDashboard #coltwo { width: 66.6667%; }
+    html.dbx-active body.indexDashboard #colthree { width: 33.3333%; }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+    html.dbx-active body.indexDashboard #coltwo,
+    html.dbx-active body.indexDashboard #colthree { width: 50%; }
+}
+@media (max-width: 767px) {
+    html.dbx-active body.indexDashboard #coltwo,
+    html.dbx-active body.indexDashboard #colthree { width: 100%; }
+}
+
+/* ---- box widths: each column is a wrapping row, every box a flex item ----
+   dbx-w100 is the whole column, dbx-w66 two thirds of it, dbx-w50 half,
+   dbx-w33 a third. Widths are set by a layout controller; without one every
+   box is dbx-w100 and the column reads as a plain stack. Below the desktop
+   breakpoint the columns are too narrow to share, so every box goes full. */
+html.dbx-active body.indexDashboard #colone,
+html.dbx-active body.indexDashboard #coltwo,
+html.dbx-active body.indexDashboard #colthree {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+html.dbx-active body.indexDashboard #colone > *,
+html.dbx-active body.indexDashboard #coltwo > *,
+html.dbx-active body.indexDashboard #colthree > * {
+    flex: 0 0 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    min-width: 0;
+}
+/* The width rules name the column ids too, so they outrank the id-based
+   base rule above; a class-only selector would lose to it. They cover the
+   dragged box's placeholder as well, which carries the same width class. */
+@media (min-width: 992px) {
+    html.dbx-active body.indexDashboard #colone > .dbx-w66,
+    html.dbx-active body.indexDashboard #coltwo > .dbx-w66,
+    html.dbx-active body.indexDashboard #colthree > .dbx-w66 { flex-basis: 66.6667%; max-width: 66.6667%; }
+    html.dbx-active body.indexDashboard #colone > .dbx-w50,
+    html.dbx-active body.indexDashboard #coltwo > .dbx-w50,
+    html.dbx-active body.indexDashboard #colthree > .dbx-w50 { flex-basis: 50%; max-width: 50%; }
+    html.dbx-active body.indexDashboard #colone > .dbx-w33,
+    html.dbx-active body.indexDashboard #coltwo > .dbx-w33,
+    html.dbx-active body.indexDashboard #colthree > .dbx-w33 { flex-basis: 33.3333%; max-width: 33.3333%; }
+    /* a gutter between boxes that share a row, without touching full-width ones */
+    html.dbx-active body.indexDashboard #colone > .dbx-w66,
+    html.dbx-active body.indexDashboard #coltwo > .dbx-w66,
+    html.dbx-active body.indexDashboard #colthree > .dbx-w66,
+    html.dbx-active body.indexDashboard #colone > .dbx-w50,
+    html.dbx-active body.indexDashboard #coltwo > .dbx-w50,
+    html.dbx-active body.indexDashboard #colthree > .dbx-w50,
+    html.dbx-active body.indexDashboard #colone > .dbx-w33,
+    html.dbx-active body.indexDashboard #coltwo > .dbx-w33,
+    html.dbx-active body.indexDashboard #colthree > .dbx-w33 { padding-right: 16px; }
+    html.dbx-active body.indexDashboard #colone > .dbx-w66:last-child,
+    html.dbx-active body.indexDashboard #coltwo > .dbx-w66:last-child,
+    html.dbx-active body.indexDashboard #colthree > .dbx-w66:last-child,
+    html.dbx-active body.indexDashboard #colone > .dbx-w50:last-child,
+    html.dbx-active body.indexDashboard #coltwo > .dbx-w50:last-child,
+    html.dbx-active body.indexDashboard #colthree > .dbx-w50:last-child,
+    html.dbx-active body.indexDashboard #colone > .dbx-w33:last-child,
+    html.dbx-active body.indexDashboard #coltwo > .dbx-w33:last-child,
+    html.dbx-active body.indexDashboard #colthree > .dbx-w33:last-child { padding-right: 0; }
+}
+
+/* ---- toolbar ---- */
+.dbx-toolbar {
+    clear: both;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 15px 10px;
+    font-size: 12px;
+    color: #777;
+}
+.dbx-toolbar .dbx-hint { flex: 1 1 auto; }
+.dbx-toolbar .dbx-reset { white-space: nowrap; }
+.dbx-toolbar .dbx-status {
+    opacity: 0;
+    transition: opacity 0.3s;
+    color: #3c763d;
+    white-space: nowrap;
+}
+.dbx-toolbar .dbx-status.dbx-status-show { opacity: 1; }
+.dbx-toolbar .dbx-status.dbx-status-error { color: #a94442; }
+
+/* ---- widgets ---- */
+.dbx-widget {
+    margin-bottom: 25px;
+}
+.dbx-widget .panel {
+    margin-bottom: 0;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #e3e6ea;
+    border-top: 3px solid #d2d6de;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s;
+}
+.dbx-widget .panel:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+.dbx-widget .panel-heading {
+    cursor: move;
+    color: #444;
+    background-color: #fff;
+    border-bottom: 1px solid #f4f4f4;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 0;
+}
+.dbx-widget .panel-heading > i.fa,
+.dbx-widget .panel-heading > .fa {
+    margin-right: 8px;
+    color: #666;
+}
+.dbx-widget .panel-heading small {
+    font-size: 11px;
+    font-weight: normal;
+    color: #999;
+    margin-left: 4px;
+}
+.dbx-widget .panel-heading .pull-right {
+    cursor: default;
+}
+.dbx-widget .panel-footer {
+    background: #fff;
+    padding: 10px;
+    border-top: 1px solid #f4f4f4;
+}
+.dbx-widget .list-group {
+    margin-bottom: 0;
+}
+.dbx-widget .list-group-item {
+    border-left: none;
+    border-right: none;
+}
+.dbx-widget .list-group-item:first-child {
+    border-top: none;
+}
+.dbx-widget .list-group-item:last-child {
+    border-bottom: none;
+}
+.dbx-widget .link-text {
+    color: #555;
+    font-weight: 600;
+}
+.dbx-widget a,
+.dbx-widget .label {
+    font-size: 12px;
+}
+.dbx-widget .label {
+    display: inline-block;
+    padding: 4px 7px;
+    font-weight: 600;
+}
+.dbx-widget .dbx-muted {
+    font-size: 10px;
+    display: block;
+    line-height: 1.2;
+    color: #999;
+}
+/* The plugin's own quiet styles. Bootstrap's .text-muted is deliberately not
+   used anywhere in the panels: a store whose admin carries a stray index.css
+   from an earlier dashboard install turns .text-muted into a 10px block, which
+   pushed the badges of zero-count rows onto their own line. */
+.dbx-widget a.dbx-quiet {
+    color: #999;
+}
+.dbx-widget .dbx-empty {
+    padding: 30px 15px;
+    text-align: center;
+    color: #999;
+}
+.dbx-widget .dbx-note {
+    color: #999;
+    font-size: 11px;
+}
+.dbx-widget .dbx-icon-quiet {
+    color: #999;
+}
+.dbx-widget .dbx-footer-link {
+    color: #999;
+    font-size: 11px;
+}
+.dbx-widget .dbx-legend {
+    font-size: 11px;
+    color: #999;
+}
+.dbx-widget .dbx-legend .text-success { color: #3c763d; }
+.dbx-widget .label-inactive-text { color: #999; }
+.dbx-widget .table { margin-bottom: 0; }
+.dbx-widget .table > tbody > tr > td { vertical-align: middle; }
+.dbx-widget .table > thead > tr > th { border-top: none; }
+
+/* dragging */
+.dbx-placeholder {
+    border: 2px dashed #bbb;
+    background: rgba(0, 0, 0, 0.02);
+    visibility: visible !important;
+    border-radius: 4px;
+    margin-bottom: 25px;
+    min-height: 120px;
+}
+.ui-sortable-helper.dbx-widget {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ---- today at a glance ---- */
+.dbx-kpi-row {
+    margin-left: -8px;
+    margin-right: -8px;
+}
+.dbx-kpi-row > div {
+    padding-left: 8px;
+    padding-right: 8px;
+}
+.dbx-kpi {
+    position: relative;
+    display: block;
+    border-radius: 3px;
+    color: #fff;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-decoration: none;
+}
+.dbx-kpi:hover,
+.dbx-kpi:focus {
+    color: #fff;
+    text-decoration: none;
+}
+.dbx-kpi .dbx-kpi-inner {
+    padding: 15px;
+}
+.dbx-kpi h3 {
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.dbx-kpi p {
+    font-size: 13px;
+    margin: 0;
+    opacity: 0.9;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+.dbx-kpi .dbx-kpi-icon {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    font-size: 60px;
+    color: rgba(0, 0, 0, 0.12);
+    transition: 0.3s;
+}
+.dbx-kpi:hover .dbx-kpi-icon {
+    font-size: 68px;
+    color: rgba(0, 0, 0, 0.17);
+}
+.dbx-kpi .dbx-kpi-footer {
+    display: block;
+    padding: 5px 0;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.1);
+    font-size: 12px;
+    font-weight: 500;
+}
+.dbx-kpi:hover .dbx-kpi-footer {
+    background: rgba(0, 0, 0, 0.2);
+}
+.dbx-bg-aqua { background-color: #00c0ef; }
+.dbx-bg-green { background-color: #00a65a; }
+.dbx-bg-yellow { background-color: #f39c12; }
+.dbx-bg-red { background-color: #dd4b39; }
+.dbx-widget.dbx-kpi-widget .panel-heading {
+    padding: 6px 15px;
+    font-size: 13px;
+    color: #888;
+    border-bottom: none;
+}
+.dbx-widget.dbx-kpi-widget .panel-body {
+    padding: 10px 15px 0;
+}
+
+/* ---- recent orders ---- */
+.dbx-status-pills a {
+    text-decoration: none;
+    margin: 0 2px;
+}
+.dbx-status-pills .label {
+    padding: 4px 8px;
+    font-weight: normal;
+    font-size: 12px;
+}
+.dbx-recent-orders td { vertical-align: middle !important; }
+.dbx-recent-orders .btn-xs { margin-left: 2px; }
+
+/* ---- charts ---- */
+.dbx-sales-chart {
+    position: relative;
+    height: 320px;
+    width: 100%;
+}
+.dbx-traffic-chart {
+    position: relative;
+    height: 280px;
+    width: 100%;
+}
+
+/* ---- top sellers ---- */
+.dbx-top-item .media-heading {
+    font-size: 13px;
+    line-height: 1.4;
+    margin-bottom: 2px;
+}
+.dbx-top-item .media-heading a { color: #444; }
+.dbx-top-image {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+.dbx-top-fallback {
+    width: 40px;
+    height: 40px;
+    background: #f4f4f4;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 3px;
+    color: #ccc;
+}
+.dbx-top-item .badge.dbx-bg-green {
+    background-color: #00a65a;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+/* ---- orders by status ---- */
+.dbx-order-status-label {
+    min-width: 28px;
+    text-align: center;
+}
+
+/* ---- who's online ---- */
+.dbx-whos-online .list-group-item-heading {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+}
+.dbx-whos-online .dbx-users-row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+/* ---- store snapshot ---- */
+.dbx-counter-badge {
+    background: #eee;
+    color: #555;
+    font-weight: normal;
+    font-size: 11px;
+}

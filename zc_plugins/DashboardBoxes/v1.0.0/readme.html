@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dashboard Boxes &mdash; Read Me</title>
+<style>
+:root{
+  --bg:#ffffff; --fg:#1f2328; --muted:#57606a; --rule:#d8dee4;
+  --panel:#f6f8fa; --accent:#0969da; --warn-bg:#fff8c5; --warn-br:#d4a72c;
+  --code-bg:#f0f2f4;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0d1117; --fg:#e6edf3; --muted:#9198a1; --rule:#30363d;
+    --panel:#161b22; --accent:#4493f8; --warn-bg:#2d2200; --warn-br:#9e6a03;
+    --code-bg:#161b22;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);
+     font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif}
+.wrap{max-width:52rem;margin:0 auto;padding:2rem 1.25rem 5rem}
+header{border-bottom:1px solid var(--rule);padding-bottom:1.25rem;margin-bottom:1.5rem}
+h1{font-size:1.75rem;margin:0 0 .3rem}
+.tagline{color:var(--muted);margin:0}
+.meta{color:var(--muted);font-size:.875rem;margin:.75rem 0 0}
+.meta a{color:var(--accent)}
+h2{font-size:1.25rem;margin:2.5rem 0 .75rem;padding-top:1.25rem;border-top:1px solid var(--rule)}
+h3{font-size:1.02rem;margin:1.75rem 0 .5rem}
+p,ul,ol{margin:0 0 1rem}
+ul,ol{padding-left:1.4rem}
+li{margin:.3rem 0}
+a{color:var(--accent)}
+code{background:var(--code-bg);padding:.12em .38em;border-radius:4px;
+     font:.87em/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:var(--panel);border:1px solid var(--rule);border-radius:6px;
+    padding:.85rem 1rem;overflow-x:auto;margin:0 0 1rem}
+pre code{background:none;padding:0}
+table{border-collapse:collapse;width:100%;margin:0 0 1.25rem;font-size:.94rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--rule);padding:.45rem .65rem;text-align:left;vertical-align:top}
+th{background:var(--panel);white-space:nowrap}
+td:first-child{white-space:nowrap}
+.note{background:var(--panel);border-left:4px solid var(--accent);
+      border-radius:0 6px 6px 0;padding:.8rem 1rem;margin:0 0 1.25rem}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn-br);
+      border-radius:0 6px 6px 0;padding:.8rem 1rem;margin:0 0 1.25rem}
+.note p:last-child,.warn p:last-child{margin-bottom:0}
+nav{background:var(--panel);border:1px solid var(--rule);border-radius:6px;
+    padding:.9rem 1rem;margin:0 0 1.5rem}
+nav p{margin:0 0 .4rem;font-weight:600;font-size:.9rem}
+nav ul{margin:0;padding-left:1.2rem;columns:2;column-gap:2rem}
+nav li{margin:.15rem 0;font-size:.92rem;break-inside:avoid;page-break-inside:avoid}
+footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--rule);
+       color:var(--muted);font-size:.875rem}
+.layout{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.82rem}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Dashboard Boxes</h1>
+  <p class="tagline">The Zen Cart 3.0.0 admin dashboard for Zen Cart 2.0 through 2.3: today's numbers, charts, recent orders with status badges, and panels you drag into place. No core file is changed.</p>
+  <p class="meta">
+    By My Zen Cart Host (dbltoe) &nbsp;&middot;&nbsp;
+    Version 1.0.0 &nbsp;&middot;&nbsp; Zen Cart v2.0.0 &ndash; v2.3 &nbsp;&middot;&nbsp;
+    GPL-2.0 &nbsp;&middot;&nbsp;
+    <a href="https://github.com/dbltoe/Dashboard_Boxes" target="_blank" rel="noopener noreferrer">github.com/dbltoe/Dashboard_Boxes</a>
+  </p>
+</header>
+
+<nav>
+  <p>On this page</p>
+  <ul>
+    <li><a href="#what">What it does</a></li>
+    <li><a href="#why">Why it exists</a></li>
+    <li><a href="#install">Installing</a></li>
+    <li><a href="#arrange">Arranging the panels</a></li>
+    <li><a href="#panels">The panels</a></li>
+    <li><a href="#colors">Order-status colors</a></li>
+    <li><a href="#permissions">Admin profiles</a></li>
+    <li><a href="#customize">Customizing</a></li>
+    <li><a href="#howitworks">How it works</a></li>
+    <li><a href="#upgrade">Upgrading the plugin</a></li>
+    <li><a href="#uninstall">Uninstalling</a></li>
+    <li><a href="#trouble">Troubleshooting</a></li>
+    <li><a href="#compat">Compatibility</a></li>
+  </ul>
+</nav>
+
+<h2 id="what">What it does</h2>
+<p>Replaces the panels on the admin home page with the set Zen Cart 3.0.0 ships, laid out as a strip across the top, a wide main area and a sidebar:</p>
+<pre class="layout"><code>+---------------------------------------------------------------+
+|  Orders today  |  Revenue today  |  New customers  |  Reviews  |
++---------------------------------------+-----------------------+
+|  Recent orders, with status badges    |  Orders by status     |
+|  and quick filters                    |  Top sellers          |
+|                                       |  Who's online         |
+|  Sales, last 30 days (chart)          |  New customers        |
+|                                       |  Sales and specials   |
+|  Traffic history (chart)              |  Store snapshot       |
++---------------------------------------+-----------------------+</code></pre>
+<p>Drag any panel by its heading to another spot or another zone. The arrangement is saved as you drop it, for you alone; every admin keeps their own. A <em>Reset layout</em> link in the small toolbar above the panels puts the defaults back.</p>
+
+<h2 id="why">Why it exists</h2>
+<p>ZenExpert's <em>Modern Dynamic Dashboard</em> was merged into Zen Cart core in 2026 and ships with 3.0.0. For the 2.x releases it only exists as a package that overwrites thirty-one core admin files, and the 2.2 copy of that package replaces two files with their 2.1.0 versions, which kills every Configuration page on a 2.2 store.</p>
+<p>This plugin is the same dashboard done as a plugin: it hooks the notifier the stock dashboard already fires, ships its own panels, stylesheet and script, keeps layouts in a table of its own, and touches nothing else. Installing it changes no file outside <code>zc_plugins/</code>; uninstalling it leaves nothing behind.</p>
+
+<h2 id="install">Installing</h2>
+<ol>
+  <li>Upload <code>zc_plugins/DashboardBoxes/</code> so it lands at <code>&lt;store root&gt;/zc_plugins/DashboardBoxes/v1.0.0/</code>.</li>
+  <li>In the admin, open <strong>Modules &gt; Plugin Manager</strong>, select <strong>Dashboard Boxes</strong> and click <strong>Install</strong>.</li>
+  <li>Open the admin home page.</li>
+</ol>
+<p>The installer creates one table, <code>dashboard_boxes_layout</code> (with your table prefix, if any). It adds no configuration keys, registers no admin page and alters no core table.</p>
+<div class="note"><p>The admin home page shows Zen Cart's own setup wizard until <em>Store Name</em>, <em>Store Owner</em>, <em>Store Owner Email</em> and <em>Store Name and Address</em> are all filled in under <strong>Configuration &gt; My Store</strong>. The dashboard, plugin or not, appears only after that.</p></div>
+
+<h2 id="arrange">Arranging the panels</h2>
+<ul>
+  <li><strong>Move a panel:</strong> press on its heading and drag. Drop it anywhere in the top strip, the main area or the sidebar.</li>
+  <li><strong>Saved as you go:</strong> each drop is stored the moment it lands. A small "Layout saved" confirmation shows in the toolbar; if the save fails, the toolbar says so in red.</li>
+  <li><strong>Per admin:</strong> the layout belongs to the admin who made it. A colleague who logs in sees their own arrangement, or the default.</li>
+  <li><strong>Reset layout:</strong> the link in the toolbar restores the default arrangement for you, after a confirmation.</li>
+</ul>
+<p>Panels from other plugins that also use the stock dashboard notifier are shown where those plugins put them and are not draggable; only the panels this plugin knows about are.</p>
+
+<h2 id="panels">The panels</h2>
+<table>
+<tr><th>Panel</th><th>Shows</th><th>Default zone</th></tr>
+<tr><td>Today at a Glance</td><td>Orders, revenue and new customer accounts since midnight (your server's PHP clock), and reviews awaiting approval. Each card links to the page behind it.</td><td>Top</td></tr>
+<tr><td>Sales</td><td>Revenue and order count per day for the last 30 days, as a line chart.</td><td>Main</td></tr>
+<tr><td>Recent Orders</td><td>The latest ten orders with a status badge, a products popover, an invoice link and an edit link. The heading carries quick-filter pills for Pending and Processing.</td><td>Main</td></tr>
+<tr><td>Traffic History</td><td>Sessions and hits per day from the store's counter history, as a bar chart. Absent if the counter is not installed.</td><td>Main</td></tr>
+<tr><td>Orders by Status</td><td>Every order status with its order count, each linking to the filtered orders list.</td><td>Sidebar</td></tr>
+<tr><td>Top Sellers</td><td>The five best-selling products of the last 30 days, with thumbnails.</td><td>Sidebar</td></tr>
+<tr><td>Who's Online</td><td>Customers, guests and spiders, split into active with cart, active browsing, idle with cart and idle.</td><td>Sidebar</td></tr>
+<tr><td>New Customers</td><td>The ten most recent accounts.</td><td>Sidebar</td></tr>
+<tr><td>Sales and Specials</td><td>Specials, featured products and Salemaker sales, active and expired.</td><td>Sidebar</td></tr>
+<tr><td>Store Snapshot</td><td>Products on and off, customer accounts and newsletter subscribers, reviews and pending reviews, and the all-time visit counter.</td><td>Sidebar</td></tr>
+</table>
+<p>Counts and charts are cached by Zen Cart's query cache for five to thirty minutes, as the stock panels are, so the dashboard stays quick on a busy store.</p>
+
+<h2 id="colors">Order-status colors</h2>
+<p>Zen Cart 2.2.1 and later let you give each order status a color under <strong>Localization &gt; Orders Status</strong>. The Recent Orders and Orders by Status panels show those colors as badges, and the quick-filter pills use them too. On Zen Cart 2.0 and 2.1, which have no color column, the panels fall back to Bootstrap's own badge colors: Pending amber, Processing blue, Delivered green, anything else gray.</p>
+
+<h2 id="permissions">Admin profiles</h2>
+<p>Each panel checks the same page permission the stock panel did. An admin whose profile has no access to <em>Orders</em> sees no Recent Orders, Orders by Status or Sales panel, and the Today at a Glance strip drops the cards they may not see. A panel that is not shown is simply not rendered; it keeps its place in the saved layout.</p>
+
+<h2 id="customize">Customizing</h2>
+<p>The Recent Orders panel honors the same site-specific overrides the stock one does, in <code>admin/includes/extra_datafiles/site_specific_admin_overrides.php</code>:</p>
+<pre><code>$recentOrdersMaxRows = 20;                    // rows (default 10)
+$recentOrdersWidgetOrderStatusIDs = [1, 2, 5]; // quick-filter pills
+$show_status_pills = false;                   // hide the pills
+$includeAttributesInPopoverRows = false;      // no attribute lines in the popover</code></pre>
+<p>Everything the plugin draws sits inside <code>.dbx-widget</code>, each panel wrapper carrying <code>data-dbx-widget="&lt;Name&gt;"</code>. Put your own rules in <code>admin/includes/css/site-specific-styles.php</code>, which core loads after every stylesheet, rather than editing the plugin's <code>index.css</code>.</p>
+<p>Another plugin can add a panel of its own through <code>NOTIFY_DASHBOARD_BOXES_REGISTRY</code>, or replace the layout about to be rendered through <code>NOTIFY_DASHBOARD_BOXES_LAYOUT</code>. Both are documented in the package's <code>docs/CUSTOMIZING.md</code>.</p>
+
+<h2 id="howitworks">How it works</h2>
+<ul>
+  <li>The stock dashboard builds a list of widgets and fires <code>NOTIFY_ADMIN_DASHBOARD_WIDGETS</code> with it. The plugin's observer marks the nine stock widgets invisible and adds its own ten, pointing at files inside the plugin directory, in the zones and order you last saved.</li>
+  <li>The 2.x dashboard renders three equal columns. The plugin's stylesheet makes the first one full width and the other two a two-to-one pair, which is the top strip, the main area and the sidebar. Nothing is moved by script, so the page does not jump on load.</li>
+  <li>Core loads a plugin's <code>index.css</code>, <code>index.php</code> and <code>index.js</code> on the dashboard page by name, so the stylesheet, the chart library and the drag-and-drop script arrive without any header hook and load nowhere else.</li>
+  <li>A drop posts the arrangement to <code>admin/ajax.php?act=dashboardBoxes&amp;method=save</code>, a class in the plugin's own AJAX directory that core's front controller finds. It requires an admin session and the session's security token, accepts only registered panel names in known zones, and stores the result in the plugin's table.</li>
+  <li>Every box carries a width, full, two thirds or one third of the page, stored with the layout. Free renders it (two one-third boxes dropped together into the main area sit side by side) but has no control to set it; that is what a layout controller adds.</li>
+  <li>Chart.js 4.5.1 is bundled and served from the plugin directory. jQuery UI and Bootstrap 3 are already on every admin page; nothing is loaded twice and nothing comes from a CDN.</li>
+</ul>
+
+<h2 id="upgrade">Upgrading the plugin</h2>
+<p>Upload the new version directory beside the old one, open Plugin Manager and click <strong>Upgrade</strong>. Saved layouts are kept. Delete the old version directory once Plugin Manager shows the new one.</p>
+
+<h2 id="uninstall">Uninstalling</h2>
+<p>Plugin Manager &gt; <strong>Dashboard Boxes</strong> &gt; <strong>Uninstall</strong>. The layout table is dropped and the stock dashboard is back at once. Delete <code>zc_plugins/DashboardBoxes/</code> afterwards if you want the files gone as well.</p>
+
+<h2 id="trouble">Troubleshooting</h2>
+<ul>
+  <li><strong>The dashboard looks stock.</strong> Plugin Manager must show the plugin as installed and enabled, not merely present. If the home page is Zen Cart's setup wizard, finish it (see <a href="#install">Installing</a>). On Zen Cart 3.0.0 the dashboard you see is core's own, by design.</li>
+  <li><strong>After an upgrade the dashboard looks like the old version.</strong> Zen Cart's shipped <code>zc_plugins/.htaccess</code> tells browsers to keep stylesheets and scripts for an hour, so a browser can hold the previous version's files for that long. A hard refresh (Ctrl+F5, or Cmd+Shift+R on a Mac) fetches the new ones.</li>
+  <li><strong>The panels are there but in three equal columns and will not drag.</strong> The browser did not load the plugin's stylesheet or script. Check that <code>zc_plugins/DashboardBoxes/v1.0.0/admin/includes/css/index.css</code> is reachable in a browser; the shipped <code>zc_plugins/.htaccess</code> allows <code>.css</code> and <code>.js</code>, but a stricter server rule can block them.</li>
+  <li><strong>"The layout could not be saved."</strong> The AJAX call was refused. The usual cause is a session that has timed out; reload the page. If it persists, look in <code>logs/</code> for a <code>myDEBUG-adm-</code> file from the moment of the drop.</li>
+  <li><strong>The charts are empty.</strong> Sales needs orders in the last 30 days; Traffic needs rows in the store's counter history, which builds up one per day once the counter runs.</li>
+  <li><strong>Today's numbers look wrong at the start of the day.</strong> "Today" is measured on your server's PHP clock, set by <em>Configuration &gt; My Store &gt; Time Zone</em> on 2.x. If the database server runs in a different time zone the orders list may still say "yesterday" for a while; the dashboard follows PHP.</li>
+</ul>
+
+<h2 id="compat">Compatibility</h2>
+<table>
+<tr><th>Zen Cart</th><td>v2.0.0, v2.0.1, v2.1.0, v2.2.0, v2.2.1, v2.2.2, v2.2.3 and the v2.3 branch. Installs on v3.0.0 and stands aside, because that release's own dashboard is this design.</td></tr>
+<tr><th>PHP</th><td>8.0 through 8.5, from a single codebase, with no deprecation notices at E_ALL.</td></tr>
+<tr><th>Not supported</th><td>v1.5.8 and earlier: their dashboard has no notifier to hook.</td></tr>
+<tr><th>Database</th><td>One table of its own, <code>dashboard_boxes_layout</code>. No configuration keys, no change to any core table.</td></tr>
+<tr><th>Assets</th><td>One stylesheet, one script and Chart.js, all served from the plugin directory. No CDN, no external services.</td></tr>
+</table>
+
+<footer>
+<p>Dashboard Boxes v1.0.0 &middot; My Zen Cart Host (dbltoe) &middot; GNU General Public License v2.0. Portions copyright the Zen Cart Development Team and ZenExpert. As always, no warranty or guarantee is applied or implied. Always make backups before adding or editing any mod.</p>
+</footer>
+
+</div>
+</body>
+</html>

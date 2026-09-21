@@ -1,0 +1,19 @@
+Dashboard Boxes -- changelog
+
+v1.0.0
+  First release.
+  - Ten dashboard panels for Zen Cart 2.0.0 through 2.3: Today at a Glance,
+    Sales, Recent Orders, Traffic History, Orders by Status, Top Sellers,
+    Who's Online, New Customers, Sales and Specials, Store Snapshot.
+  - Drag-and-drop arrangement across a top strip, a main area and a sidebar,
+    saved per admin in the plugin's own table; a Reset link puts the default
+    back.
+  - Order-status colors from Admin > Localization > Orders Status (Zen Cart
+    2.2.1 and later) shown as badges in the Recent Orders and Orders by Status
+    panels.
+  - Box widths (full, two thirds, one third) carried with the layout and
+    rendered; set by a layout controller, not by this plugin.
+  - Nothing outside zc_plugins/ is written. Uninstalling drops the layout
+    table and restores the stock dashboard.
+  - On Zen Cart 3.0.0, where this dashboard is core, the plugin installs and
+    stands aside.
