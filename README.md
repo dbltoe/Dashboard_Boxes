@@ -1,4 +1,4 @@
-# Dashboard Boxes 1.0.0
+# Dashboard Boxes 1.0.1
 
 An encapsulated Zen Cart plugin that gives the admin home page of **Zen Cart
 2.0.0 through 2.3** the dashboard Zen Cart 3.0.0 ships: a strip of today's

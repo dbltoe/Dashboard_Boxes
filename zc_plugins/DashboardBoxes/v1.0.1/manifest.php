@@ -23,7 +23,7 @@ if (!defined('IS_ADMIN_FLAG')) {
  * On v2.0 and v2.1 the description is written only by the INSERT that first
  * creates the plugin_control row, so nothing state-dependent belongs here.
  */
-$dbxPluginDir = 'zc_plugins/DashboardBoxes/v1.0.0/';
+$dbxPluginDir = 'zc_plugins/DashboardBoxes/v1.0.1/';
 $dbxReadmeUrl = (defined('DIR_WS_CATALOG') ? DIR_WS_CATALOG : '/') . $dbxPluginDir . 'readme.html';
 $dbxGithubUrl = 'https://github.com/dbltoe/Dashboard_Boxes';
 
@@ -50,7 +50,7 @@ $dbxLinks = '<div style="padding:0 0 0 ' . $dbxButtonGap . '">'
 $dbxForumLink = '';
 
 return [
-    'pluginVersion' => 'v1.0.0',
+    'pluginVersion' => 'v1.0.1',
     'pluginName' => 'Dashboard Boxes',
     'pluginDescription' =>
         'A modern admin home for Zen Cart 2.0 through 2.3: a strip of today\'s numbers, '
@@ -63,9 +63,12 @@ return [
         . $dbxForumLink,
     // Shown as the Author in Plugin Manager (varchar(64)).
     'pluginAuthor' => 'My Zen Cart Host (dbltoe)',
-    // ID from the Zen Cart Plugins Library. Zero until the Library assigns one;
-    // it is what makes "a new version is available" work in Plugin Manager.
-    'pluginId' => 0,
+    // The Zen Cart Plugins Library's ID for this plugin
+    // (https://www.zen-cart.com/plugins/dashboard-boxes), assigned on
+    // 6 October 2026; the listing's earlier ID 2263 also belonged to another
+    // plugin. Plugin Manager sends it to the Library's version check, so it is
+    // what makes "a new version is available" report this plugin. An integer.
+    'pluginId' => 2461,
     'zcVersions' => ['v200', 'v210', 'v220', 'v230', 'v300'],
     'changelog' => 'changelog.txt',
     'github_repo' => $dbxGithubUrl,

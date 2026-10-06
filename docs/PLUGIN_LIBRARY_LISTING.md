@@ -1,12 +1,13 @@
 # Plugins Library listing text
 
-Not yet listed. Paste into the Zen Cart Plugins Library submission form,
-category **Admin Tools**. The form takes Markdown. Not part of the release
-package.
+Listed at https://www.zen-cart.com/plugins/dashboard-boxes, category
+**Admin Tools**, Plugin ID **2461**. The Library renumbered the listing on
+6 October 2026: its earlier ID, 2263, also belonged to another plugin
+(BitPay), so the version check answered with that plugin. v1.0.1 carries
+2461 in the manifest. The text below is what the submission form takes
+(Markdown). Not part of the release package.
 
-The Plugin ID arrives on acceptance: put it in the manifest, rebuild, run
-the suite, commit, push, re-cut the GitHub release and re-upload the zip.
-The listing's version string must match the manifest exactly, `v1.0.0`,
+The listing's version string must match the manifest exactly, `v1.0.1`,
 `v` included, or nobody is notified of updates. The install root the
 Library derives from the zip must be unique across plugin records.
 
@@ -72,9 +73,10 @@ Yes
 
 ## Version string
 
-v1.0.0
+v1.0.1
 
 ## Links
 
+- Plugins Library: https://www.zen-cart.com/plugins/dashboard-boxes
 - GitHub: https://github.com/dbltoe/Dashboard_Boxes
 - Support thread: https://www.zen-cart.com/threads/207350

@@ -1,5 +1,18 @@
 Dashboard Boxes -- changelog
 
+v1.0.1
+  - Plugin ID is now 2461, the ID the Zen Cart Plugins Library assigned on
+    6 October 2026 (the listing's earlier ID 2263 belonged to another
+    plugin), so update notices in Plugin Manager now report this plugin.
+  - No code or settings changes; saved layouts are untouched. Upgrading is
+    optional.
+  Upgrading: upload the v1.0.1 folder beside the old one, then click Upgrade
+  in Plugin Manager. Zen Cart 2.2 and later pick up the new ID the next time
+  Plugin Manager is opened. Zen Cart 2.0 and 2.1 record the ID only when
+  they first list the plugin; to set it there (not required), run this in
+  Admin > Tools > Install SQL Patches, which adds your table prefix itself:
+    UPDATE plugin_control SET zc_contrib_id = 2461 WHERE unique_key = 'DashboardBoxes';
+
 v1.0.0
   First release.
   - Ten dashboard panels for Zen Cart 2.0.0 through 2.3: Today at a Glance,

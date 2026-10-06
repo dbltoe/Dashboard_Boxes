@@ -13,7 +13,7 @@ Posted by John 2026-09-21 in Addon Admin Tools: https://www.zen-cart.com/threads
 
 ---
 
-**Dashboard Boxes v1.0.0** - the Zen Cart 3.0.0 admin dashboard for Zen Cart 2.0 through 2.3, as an encapsulated plugin
+**Dashboard Boxes v1.0.1** - the Zen Cart 3.0.0 admin dashboard for Zen Cart 2.0 through 2.3, as an encapsulated plugin
 
 **Plugins Library:** (link once listed)
 **GitHub:** https://github.com/dbltoe/Dashboard_Boxes
@@ -51,7 +51,7 @@ The design is ZenExpert's Modern Dynamic Dashboard, which the Zen Cart team merg
 
 **Installing**
 
-1. Upload `zc_plugins/DashboardBoxes/` so it lands at `<store root>/zc_plugins/DashboardBoxes/v1.0.0/`.
+1. Upload `zc_plugins/DashboardBoxes/` so it lands at `<store root>/zc_plugins/DashboardBoxes/v1.0.1/`.
 2. Admin -> Modules -> Plugin Manager -> Dashboard Boxes -> Install.
 3. Open the admin home page.
 
@@ -71,4 +71,4 @@ A controller page for widths, per-profile defaults and locked layouts, and furth
 
 **Reporting a problem**
 
-Please include: your Zen Cart and PHP versions, whether the store is behind a CDN or a caching proxy, and what the admin home page shows. If the panels are there but sit in three equal columns and will not drag, the plugin's stylesheet or script did not load; check that `zc_plugins/DashboardBoxes/v1.0.0/admin/includes/css/index.css` opens in a browser. If the dashboard looks like the previous version after an upgrade, hard-refresh: browsers keep the plugin's stylesheet for an hour. Anything else: look in `logs/` for a `myDEBUG-adm-` file from the moment of the problem and attach it.
+Please include: your Zen Cart and PHP versions, whether the store is behind a CDN or a caching proxy, and what the admin home page shows. If the panels are there but sit in three equal columns and will not drag, the plugin's stylesheet or script did not load; check that `zc_plugins/DashboardBoxes/v1.0.1/admin/includes/css/index.css` opens in a browser. If the dashboard looks like the previous version after an upgrade, hard-refresh: browsers keep the plugin's stylesheet for an hour. Anything else: look in `logs/` for a `myDEBUG-adm-` file from the moment of the problem and attach it.

@@ -64,7 +64,7 @@ footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--rule);
   <p class="tagline">The Zen Cart 3.0.0 admin dashboard for Zen Cart 2.0 through 2.3: today's numbers, charts, recent orders with status badges, and panels you drag into place. No core file is changed.</p>
   <p class="meta">
     By My Zen Cart Host (dbltoe) &nbsp;&middot;&nbsp;
-    Version 1.0.0 &nbsp;&middot;&nbsp; Zen Cart v2.0.0 &ndash; v2.3 &nbsp;&middot;&nbsp;
+    Version 1.0.1 &nbsp;&middot;&nbsp; Zen Cart v2.0.0 &ndash; v2.3 &nbsp;&middot;&nbsp;
     GPL-2.0 &nbsp;&middot;&nbsp;
     <a href="https://github.com/dbltoe/Dashboard_Boxes" target="_blank" rel="noopener noreferrer">github.com/dbltoe/Dashboard_Boxes</a>
   </p>
@@ -110,7 +110,7 @@ footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid var(--rule);
 
 <h2 id="install">Installing</h2>
 <ol>
-  <li>Upload <code>zc_plugins/DashboardBoxes/</code> so it lands at <code>&lt;store root&gt;/zc_plugins/DashboardBoxes/v1.0.0/</code>.</li>
+  <li>Upload <code>zc_plugins/DashboardBoxes/</code> so it lands at <code>&lt;store root&gt;/zc_plugins/DashboardBoxes/v1.0.1/</code>.</li>
   <li>In the admin, open <strong>Modules &gt; Plugin Manager</strong>, select <strong>Dashboard Boxes</strong> and click <strong>Install</strong>.</li>
   <li>Open the admin home page.</li>
 </ol>
@@ -203,7 +203,7 @@ $includeAttributesInPopoverRows = false;      // no attribute lines in the popov
 <ul>
   <li><strong>The dashboard looks stock.</strong> Plugin Manager must show the plugin as installed and enabled, not merely present. If the home page is Zen Cart's setup wizard, finish it (see <a href="#install">Installing</a>). On Zen Cart 3.0.0 the dashboard you see is core's own, by design.</li>
   <li><strong>After an upgrade the dashboard looks like the old version.</strong> Zen Cart's shipped <code>zc_plugins/.htaccess</code> tells browsers to keep stylesheets and scripts for an hour, so a browser can hold the previous version's files for that long. A hard refresh (Ctrl+F5, or Cmd+Shift+R on a Mac) fetches the new ones.</li>
-  <li><strong>The panels are there but in three equal columns and will not drag.</strong> The browser did not load the plugin's stylesheet or script. Check that <code>zc_plugins/DashboardBoxes/v1.0.0/admin/includes/css/index.css</code> is reachable in a browser; the shipped <code>zc_plugins/.htaccess</code> allows <code>.css</code> and <code>.js</code>, but a stricter server rule can block them.</li>
+  <li><strong>The panels are there but in three equal columns and will not drag.</strong> The browser did not load the plugin's stylesheet or script. Check that <code>zc_plugins/DashboardBoxes/v1.0.1/admin/includes/css/index.css</code> is reachable in a browser; the shipped <code>zc_plugins/.htaccess</code> allows <code>.css</code> and <code>.js</code>, but a stricter server rule can block them.</li>
   <li><strong>"The layout could not be saved."</strong> The AJAX call was refused. The usual cause is a session that has timed out; reload the page. If it persists, look in <code>logs/</code> for a <code>myDEBUG-adm-</code> file from the moment of the drop.</li>
   <li><strong>The charts are empty.</strong> Sales needs orders in the last 30 days; Traffic needs rows in the store's counter history, which builds up one per day once the counter runs.</li>
   <li><strong>Today's numbers look wrong at the start of the day.</strong> "Today" is measured on your server's PHP clock, set by <em>Configuration &gt; My Store &gt; Time Zone</em> on 2.x. If the database server runs in a different time zone the orders list may still say "yesterday" for a while; the dashboard follows PHP.</li>
@@ -219,7 +219,7 @@ $includeAttributesInPopoverRows = false;      // no attribute lines in the popov
 </table>
 
 <footer>
-<p>Dashboard Boxes v1.0.0 &middot; My Zen Cart Host (dbltoe) &middot; GNU General Public License v2.0. Portions copyright the Zen Cart Development Team and ZenExpert. As always, no warranty or guarantee is applied or implied. Always make backups before adding or editing any mod.</p>
+<p>Dashboard Boxes v1.0.1 &middot; My Zen Cart Host (dbltoe) &middot; GNU General Public License v2.0. Portions copyright the Zen Cart Development Team and ZenExpert. As always, no warranty or guarantee is applied or implied. Always make backups before adding or editing any mod.</p>
 </footer>
 
 </div>

@@ -17,7 +17,7 @@ zc_plugins/DashboardBoxes/
 Upload it so it lands at:
 
 ```
-<your store root>/zc_plugins/DashboardBoxes/v1.0.0/
+<your store root>/zc_plugins/DashboardBoxes/v1.0.1/
 ```
 
 That directory should contain `manifest.php`, `readme.html`, `changelog.txt`,
